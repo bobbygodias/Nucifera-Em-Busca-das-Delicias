@@ -50,7 +50,7 @@ Os Gulosos espalharam as delícias da confeitaria! Peterzinho parte para recuper
 
 ## Baixe e jogue
 
-1. Abra o **[download do APK](https://github.com/bobbygodias/Nucifera-Em-Busca-das-Delicias/releases/download/v0.1.7-prototipo/Nucifera-0.1.7-prototipo.apk)** ou a página de **[Releases](https://github.com/bobbygodias/Nucifera-Em-Busca-das-Delicias/releases/latest)**.
+1. Abra o **[download do APK](https://github.com/bobbygodias/Nucifera-Em-Busca-das-Delicias/releases/download/v0.1.7-prototipo/Nucifera-0.1.7-prototipo.apk)** ou a página de **[Releases](https://github.com/bobbygodias/Nucifera-Em-Busca-das-Delicias/releases/tag/v0.1.7-prototipo)**.
 2. No Android, abra o arquivo baixado. Se o sistema solicitar, autorize a instalação pela aplicação usada para abrir o APK.
 3. Inicie **Nucífera** e aproveite a aventura!
 
