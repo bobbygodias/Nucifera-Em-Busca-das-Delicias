@@ -1,0 +1,25 @@
+/* Nucífera — Bobby Dias Developer, 36e3b89c-2939-5565-a551-83d310ac8c6f.
+ * The playfield keeps its 360x500 proportions at any device orientation. */
+body.nuci-native { min-height: 100vh; min-height: 100dvh; }
+.nuci-native .app { width: 100%; max-width: 480px; min-height: 0; height: 100vh; height: 100dvh; padding: 6px 10px 8px; overflow: hidden; }
+.nuci-native .app > * { flex-shrink: 0; }
+.nuci-native h1 { font-size: 20px; line-height: 1.15; margin: 0 0 3px; }
+.nuci-native .sub { font-size: 10px; line-height: 1.25; margin: 0 0 5px; }
+.nuci-native .stats { gap: 7px; margin-bottom: 5px; }
+.nuci-native .stat { padding: 4px; }
+.nuci-native .stat b { font-size: 18px; }
+.nuci-native .stat span { font-size: 9px; }
+.nuci-native .progress { height: 6px; }
+.nuci-native .goal { font-size: 10px; line-height: 1.3; margin: 4px 0 5px; }
+.nuci-native .platform { width: 100%; max-width: 420px; min-height: 0; }
+.nuci-native #jumpCanvas { width: 100%; height: auto; }
+.nuci-native .jumpControls { gap: 6px; margin-top: 6px; }
+.nuci-native .jumpBtn { height: 44px; min-width: 0; padding: 0 3px; }
+.nuci-native .jumpAction { font-size: 10px; letter-spacing: .02em; }
+.nuci-native .controls { width: 100%; justify-content: center; margin-top: 6px; }
+.nuci-native .pauseButton { height: 44px; margin: 0; padding: 0 4px; font-size: 12px; border-radius: 14px; }
+.nuci-native .journeyReset { font-size: 10px; line-height: 1.25; padding: 4px 8px; margin-top: 2px; }
+.nuci-native .hint { font-size: 9px; line-height: 1.25; margin: 2px 0 0; }
+.nuci-native #modal { position: fixed; background: #f6f1dc; }
+.nuci-native #scoreList { max-width: 420px; }
+.nuci-native .toast { white-space: normal; max-width: 90vw; text-align: center; width: max-content; }

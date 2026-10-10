@@ -1,0 +1,73 @@
+plugins { id 'com.android.application' }
+
+def signingFile = rootProject.file('.signing/signing.properties')
+def signingSecrets = new Properties()
+if (signingFile.exists()) signingFile.withInputStream { signingSecrets.load(it) }
+
+android {
+    namespace 'com.bobbydias.nucifera'
+    compileSdk 35
+    buildToolsVersion '35.0.0'
+    buildFeatures { buildConfig true }
+    defaultConfig {
+        applicationId 'com.bobbydias.nucifera'
+        minSdk 21
+        targetSdk 35
+        versionCode 8
+        versionName '0.1.7-prototipo'
+        resValue 'string', 'app_name', 'Nucífera'
+    }
+    signingConfigs {
+        release {
+            if (signingFile.exists()) {
+                storeFile rootProject.file('.signing/nucifera-release.jks')
+                storePassword signingSecrets.getProperty('storePassword')
+                keyAlias 'nucifera'
+                keyPassword signingSecrets.getProperty('keyPassword')
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    androidResources { noCompress += ['mp4'] }
+    sourceSets.main.assets.srcDirs = [layout.buildDirectory.dir('game-assets')]
+}
+
+dependencies { implementation 'androidx.webkit:webkit:1.12.1' }
+
+// Package only the assets actually used by the approved game, never working files.
+def gameDirectory = rootProject.projectDir.parentFile
+def gameFiles = ['index.html', 'game.js', 'motorcycle.js']
+def usedAssets = new LinkedHashSet<String>()
+gameFiles.each { name ->
+    def matcher = gameDirectory.toPath().resolve(name).toFile().getText('UTF-8') =~ /assets\/([A-Za-z0-9_.-]+\.(?:png|jpg|jpeg|mp4|wav|mp3|webp))/
+    matcher.each { match -> usedAssets.add(match[1]) }
+}
+def syncGame = tasks.register('syncGameAssets', Sync) {
+    inputs.files(gameFiles.collect { new File(gameDirectory, it) })
+    into layout.buildDirectory.dir('game-assets')
+    from(gameDirectory) { include 'index.html', 'game.js', 'motorcycle.js', 'logo-nucifera.jpg' }
+    from(new File(gameDirectory, 'assets')) { include usedAssets.toList(); into 'assets' }
+    from('src/main/game') { include 'android-layout.css' }
+    doLast {
+        usedAssets.each { name ->
+            if (!new File(destinationDir, "assets/${name}").isFile()) {
+                throw new GradleException("Missing game asset: ${name}")
+            }
+        }
+        def html = new File(destinationDir, 'index.html')
+        html.setText(html.getText('UTF-8')
+            .replace('</head>', '<link rel="stylesheet" href="android-layout.css"></head>')
+            .replace('<body>', '<body class="nuci-native">')
+            .replace(' target="_blank"', ''), 'UTF-8')
+    }
+}
+tasks.named('preBuild').configure { dependsOn syncGame }

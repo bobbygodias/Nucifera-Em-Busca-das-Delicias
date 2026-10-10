@@ -1,0 +1,20 @@
+# Local build output and private signing material
+.gradle/
+**/build/
+**/local.properties
+**/.signing/
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.key
+*.pem
+signing.properties
+.env
+.env.*
+*.apk
+*.aab
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

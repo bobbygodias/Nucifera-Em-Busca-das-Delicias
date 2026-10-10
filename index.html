@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><meta name="theme-color" content="#f6f1dc"><meta name="application-author" content="Bobby Dias Developer">
+<meta name="application-developer-id" content="36e3b89c-2939-5565-a551-83d310ac8c6f">
+<title>Nucífera: Em Busca das Delícias</title>
+<style>
+/* Holding game controls must not open text selection or the touch context menu. */
+body,body *{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+body input,body textarea,body [contenteditable="true"],body [contenteditable="true"] *,body [contenteditable=""],body [contenteditable=""] *{-webkit-user-select:text;user-select:text;-webkit-touch-callout:default}
+.progress{height:8px;background:#e8dbc0;border-radius:8px;width:100%;overflow:hidden}.progress span{display:block;height:100%;width:0;background:var(--peach);transition:width .3s}.goal{font:12px system-ui;color:#9b8766;text-align:center;line-height:1.5;margin:8px 8px 12px}.visit{font:14px/1.5 system-ui;color:#70502a;margin:8px 0 4px}.maplink{font:600 13px system-ui;color:#70502a;margin:4px 0 8px;text-decoration:underline}.nickBox{width:100%;max-width:310px;margin:10px 0 6px;padding:11px 12px;border:1px solid #e6d2b4;border-radius:14px;background:#fffaf0;text-align:left}.nickBox label{display:block;font:600 12px system-ui;color:#70502a;margin-bottom:6px}.nickRow{display:flex;gap:7px}.nickRow input{min-width:0;flex:1;border:1px solid #dfcfb1;border-radius:9px;background:#fffdf7;padding:9px 10px;font:14px system-ui;color:#49381f}.nickRow button{border:0;border-radius:9px;background:#70502a;color:#fff9ea;padding:8px 12px;font:600 12px system-ui}.nickBox small{display:block;font:10px/1.4 system-ui;color:#9b8766;margin-top:6px}.screen#modal{overflow-y:auto;justify-content:flex-start;padding-top:22px;padding-bottom:22px}
+:root{--cream:#f6f1dc;--brown:#70502a;--peach:#e9a08a;--rose:#f3c2ae;--ink:#49381f;--sage:#84946b}*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Georgia,'Times New Roman',serif;min-height:100dvh}button{font:inherit;color:inherit}.app{width:min(100%,480px);min-height:100dvh;margin:auto;padding:18px 20px 24px;display:flex;flex-direction:column;align-items:center;position:relative;overflow:hidden}.top{display:flex;width:100%;justify-content:space-between;align-items:center;font:600 12px system-ui;letter-spacing:.12em;color:#927750;text-transform:uppercase}.brand{font-family:cursive;font-size:25px;font-weight:500;color:var(--brown);letter-spacing:0}.brand small{display:block;font:10px system-ui;letter-spacing:.18em;text-align:center;text-transform:uppercase}.logo{width:100px;height:100px;border:1.5px solid var(--brown);border-radius:50%;margin:22px 0 8px;display:grid;place-items:center;background:#fbf7e9;box-shadow:0 5px 18px #61431b12}.logo-mark{width:100%;height:100%;object-fit:contain;border-radius:50%}h1{font-size:28px;font-weight:400;margin:6px 0 5px;text-align:center}.sub{font:14px system-ui;color:#927750;margin:0 0 22px;text-align:center}.stats{display:flex;gap:10px;width:100%;margin:0 0 16px}.stat{flex:1;text-align:center;background:#fffaf0;border:1px solid #e8dbc0;border-radius:14px;padding:10px 6px}.stat b{display:block;font:700 21px system-ui;color:var(--brown)}.stat span{font:10px system-ui;letter-spacing:.12em;text-transform:uppercase;color:#a48e6c}.controls{display:flex;gap:10px;width:100%;margin:18px 0 0}.btn{flex:1;border:0;border-radius:13px;padding:13px 10px;background:var(--brown);color:#fff9ea;font:600 13px system-ui;cursor:pointer}.btn.secondary{background:#eadcc0;color:var(--brown)}.hint{font:12px system-ui;color:#9b8766;text-align:center;line-height:1.5;margin:16px 8px 0}.footer{margin-top:auto;padding-top:20px;font:10px system-ui;color:#b2a17f;letter-spacing:.12em;text-align:center}.screen{position:absolute;inset:0;background:#f6f1dcef;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center;z-index:4;transition:opacity .7s}.screen.hide{opacity:0;pointer-events:none}.screen .logo{margin:0 0 14px}.screen h2{font-weight:400;font-size:30px;margin:8px}.screen p{font:14px/1.6 system-ui;color:#866f4d;max-width:300px}.screen .btn{max-width:230px;margin-top:14px;flex:none;width:100%}.list{list-style:none;padding:0;width:100%;font:14px system-ui}.list li{padding:9px;border-bottom:1px solid #e6d9bd;display:flex;justify-content:space-between}.notice{font:11px/1.5 system-ui;color:#a18d6b;margin-top:15px}.toast{position:fixed;bottom:25px;left:50%;transform:translate(-50%,20px);opacity:0;background:#604521;color:white;padding:12px 18px;border-radius:20px;font:13px system-ui;transition:.25s;z-index:8;white-space:nowrap}.toast.show{opacity:1;transform:translate(-50%,0)}
+.platform{width:100%;max-width:420px}.platform[hidden]{display:none}#jumpCanvas{display:block;width:100%;height:auto;border-radius:18px;border:1px solid #d9c39d;background:#fff7e7;touch-action:none}.jumpControls{display:flex;gap:8px;margin-top:9px}.jumpBtn{flex:1;border:0;border-radius:14px;background:#eadcc0;color:#70502a;height:48px;font:700 16px system-ui;touch-action:none}.jumpBtn.active{background:#d7c39e;box-shadow:inset 0 0 0 2px #96754b}.jumpAction{background:#70502a;color:#fff9ea;font-size:12px;letter-spacing:.12em}#clothAction{flex:.9;background:#87936c;color:#fffdf4;font-size:11px;letter-spacing:.06em}#clothAction[hidden]{display:none}
+#storyScreen{height:100vh;height:100dvh;min-height:0;padding:18px 12px;overflow:hidden;background:#f6f1dc;z-index:7}
+.cover-card{position:relative;flex:none;width:100%;max-width:540px;height:100%;min-height:0;border:1px solid #dfcaa5;border-radius:26px;overflow:hidden;background:#f8ecd7;box-shadow:0 14px 40px rgba(92,62,29,.16)}
+.cover-stage{position:relative;z-index:1;min-height:0;width:100%;height:100%;overflow:hidden}
+.cover-floor{position:absolute;left:0;right:0;bottom:0;z-index:0;background:url('assets/cover-background.jpg') center bottom/100% auto no-repeat;opacity:0;pointer-events:none}
+.cover-layer{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain;opacity:0;pointer-events:none}
+.cover-layer[hidden]{display:none!important}
+.cover-actions{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;flex-direction:column;align-items:center;padding:30px 14px 13px;background:linear-gradient(to bottom,rgba(48,27,14,0),rgba(48,27,14,.76) 35%,rgba(48,27,14,.94));opacity:0;visibility:hidden}
+#storyScreen.ready .cover-actions{visibility:visible}
+#storyScreen .story-start{flex:none;width:100%;max-width:310px;min-height:48px;margin:0;padding:12px 10px;background:#70502a;color:#fff9ea;border:1px solid #e5c792;border-radius:14px;font:700 15px system-ui;box-shadow:0 3px 10px rgba(0,0,0,.3);opacity:0;visibility:hidden;touch-action:manipulation}
+#storyScreen.ready .story-start{visibility:visible}
+#storyScreen .story-foot{width:100%;max-width:400px;margin:8px 0 0;color:#fff6df;font:500 12px/1.4 system-ui;text-shadow:0 1px 3px #000;opacity:0}
+/* A single foreground clock reveals the layers; reduced motion keeps the fades and order. */
+#intro.cinema{z-index:8;background:#f6f4dd;transition:none;opacity:0}
+#intro .logo-art{width:88vw;max-width:430px;max-height:48vh;object-fit:contain;opacity:0}
+#intro .cinema-caption{margin:22px 0 0;font:12px system-ui;letter-spacing:.2em;text-transform:uppercase;color:#927750;opacity:0}
+#openingLoadError{position:fixed;z-index:8;background:#f6f1dc}
+@media(max-height:520px){#storyScreen{padding:8px}.cover-card{border-radius:20px}.cover-actions{padding:22px 10px 8px}#storyScreen .story-start{font-size:11px;padding:8px 5px;min-height:44px}#storyScreen .story-foot{font-size:10px;line-height:1.25;margin-top:5px}}
+</style><style>.journeyReset{border:0;background:transparent;color:#9b8766;text-decoration:underline;font:11px system-ui;padding:5px 10px;margin-top:3px;cursor:pointer}</style>
+<style>
+.story-video-screen{position:fixed;inset:0;z-index:9;display:grid;place-items:center;background:#000}.story-video-screen[hidden]{display:none}.story-video-screen video{display:block;width:100%;height:100dvh;object-fit:contain;background:#000}.story-video-feedback{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);width:min(90%,420px);padding:16px;background:#181818ed;border-radius:16px;color:#fff;font:14px/1.5 system-ui;text-align:center}.story-video-feedback[hidden]{display:none}.story-video-feedback p{margin:0 0 12px}.story-video-feedback button{border:0;border-radius:10px;padding:11px 16px;background:#70502a;color:#fff;font:600 13px system-ui;cursor:pointer;margin:3px}.story-video-feedback button.secondary{background:#eadcc0;color:#70502a}
+</style>
+<style>
+/* Opening owns the whole viewport; gameplay is revealed only after the story video. */
+.app[hidden],.screen[hidden]{display:none!important}
+.screen.hide{visibility:hidden}
+#intro,#storyScreen{position:fixed;top:0;right:0;bottom:0;left:0}
+.controls{justify-content:center}.pauseButton{flex:none;width:100px;background:#668a9d;color:#fffaf0}.pause-screen{position:fixed;z-index:8;background:#f6f1dcf5}
+</style></head>
+<body><main class="app" hidden>
+<h1 id="gameTitle">Pulos na confeitaria</h1><p class="sub" id="gameSub">Um salto de cada vez, sempre atrás de mais um morango.</p>
+<section class="stats"><div class="stat"><b id="moves">0</b><span id="movesLabel">pontos</span></div><div class="stat"><b id="streak">0</b><span id="streakLabel">guloseimas</span></div><div class="stat"><b id="round">1</b><span>fase</span></div></section><div class="progress"><span id="progressFill"></span></div><p class="goal" id="goal">Atravesse a confeitaria e encontre a saída.</p>
+<section class="platform" id="platform"><canvas id="jumpCanvas" width="360" height="500" aria-label="Aventura de plataforma vertical"></canvas><div class="jumpControls"><button class="jumpBtn" data-dir="-1" aria-label="Mover para a esquerda">◀</button><button class="jumpBtn jumpAction" id="jumpAction">PULAR</button><button class="jumpBtn" id="clothAction" aria-label="Bater com o paninho">PANO</button><button class="jumpBtn" data-dir="1" aria-label="Mover para a direita">▶</button></div></section>
+<div class="controls"><button class="btn pauseButton" id="pauseAction" type="button">Pausar</button></div><button class="journeyReset" id="journeyReset" type="button">Recomeçar do jardim</button>
+<p class="hint" id="gameHint">Guie a flor pelos botões laterais. Use os impulsos extras com estratégia.</p>
+</main>
+<section class="screen pause-screen" id="pauseScreen" role="dialog" aria-modal="true" aria-labelledby="pauseTitle" hidden><h2 id="pauseTitle">Jogo pausado</h2><p>A aventura espera por você.</p><button class="btn" id="resumeAdventure" type="button">Continuar</button></section>
+<section class="story-video-screen" id="endingVideoScreen" role="dialog" aria-modal="true" aria-label="Final da aventura" hidden><div class="story-video-feedback" id="endingVideoFeedback" role="status" hidden><p>Não foi possível reproduzir o vídeo final. Você pode tentar novamente.</p><button type="button" id="retryEndingVideo">Reproduzir vídeo</button><button type="button" class="secondary" id="continueAfterEndingError">Continuar</button></div></section>
+<div class="screen cinema" id="intro"><img class="logo-art" src="logo-nucifera.jpg" alt="Logotipo Nucífera"><p class="cinema-caption">um instante de doçura</p></div>
+<section class="screen" id="openingLoadError" role="alert" hidden><p>Não foi possível carregar a abertura.</p><button class="btn" id="retryOpeningAssets" type="button">Tentar novamente</button></section>
+<section class="story-video-screen" id="storyVideoScreen" role="dialog" aria-modal="true" aria-label="História da aventura" hidden>
+  <video id="storyVideo" src="assets/opening-story.mp4?v=20261009-1" preload="auto" playsinline aria-label="Apresentação do protótipo e história de Peterzinho e Sarinha"></video>
+  <div class="story-video-feedback" id="storyVideoFeedback" role="status" hidden><p id="storyVideoMessage"></p><button type="button" id="retryStoryVideo">Reproduzir vídeo</button><button type="button" class="secondary" id="continueAfterVideoError">Continuar para as fases</button></div>
+</section>
+  <section class="screen hide story-screen" id="storyScreen" aria-label="Nucífera: Em Busca das Delícias" hidden>
+  <div class="cover-card">
+    <div class="cover-stage" role="img" aria-label="Capa de Nucífera: Em Busca das Delícias. Peterzinho tenta alcançar a formiguinha que foge com um doce, enquanto Sarinha observa preocupada na confeitaria.">
+      <img class="cover-layer cover-background" src="assets/cover-background.jpg" alt="" draggable="false">
+      <img class="cover-layer cover-sarinha" src="assets/cover-sarinha.png" alt="" draggable="false">
+      <img class="cover-layer cover-peterzinho" src="assets/cover-peterzinho.png" alt="" draggable="false">
+      <img class="cover-layer cover-formiguinha" src="assets/cover-formiguinha.png" alt="" draggable="false">
+      <img class="cover-layer cover-logotipo" src="assets/cover-logotipo.png" alt="" draggable="false">
+      <img class="cover-layer cover-titulo" src="assets/cover-titulo.png" alt="" draggable="false">
+    </div>
+    <div class="cover-floor" aria-hidden="true"></div>
+    <div class="cover-actions"><button class="btn story-start" id="startAdventure" type="button" disabled>Toque aqui para começar</button><p class="story-foot">Dez regiões, guloseimas perdidas e uma confeitaria esperando por você.</p></div>
+  </div>
+</section>
+<div class="screen hide" id="modal"><h2 id="modalTitle">Seu ranking pessoal</h2><p id="modalText"></p><ol class="list" id="scoreList"></ol><div class="nickBox"><label for="nicknameInput">Seu apelido no placar</label><div class="nickRow"><input id="nicknameInput" maxlength="20" autocomplete="nickname" placeholder="Como quer aparecer?"><button type="button" id="saveNickname">Salvar</button></div><small id="nicknameNote">O apelido pode ter até 20 caracteres.</small></div><p class="visit" id="visitMessage"></p><a class="maplink" id="mapLink" href="https://www.google.com/maps/place/Harmonie+Caf%C3%A9+e+Confeitaria/@-16.6805767,-49.2506645,18z/data=!3m1!4b1!4m6!3m5!1s0x935ef1267c30ab93:0x5dcd3c0b4319250a!8m2!3d-16.6805767!4d-49.2493744!16s%2Fg%2F11z80t32vq" target="_blank" rel="noopener">Ver o caminho até a Nucífera</a><button class="btn" id="close">Continuar</button></div>
+<div class="toast" id="toast"></div>
+  <script src="motorcycle.js?v=20261009-8"></script><script src="game.js?v=20261010-20"></script></body></html>
