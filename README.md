@@ -4,7 +4,7 @@
 
 ### Uma pequena aventura. Um grande carinho.
 
-**Protótipo gratuito para Android · Dia das Crianças 2026 · Projeto social**
+**Protótipo gratuito para Android · Dia das Crianças · Projeto social**
 
 <p>
   <img alt="Android 5.0 ou superior" src="https://img.shields.io/badge/Android-5.0%2B-84946B?style=flat-square" />
@@ -23,7 +23,7 @@
 
 ## Uma aventura feita para compartilhar
 
-**Nucífera: Em Busca das Delícias** nasceu como uma iniciativa social para o **Dia das Crianças de 2026**: oferecer uma brincadeira gratuita, acolhedora e acessível para crianças e famílias, inspirada no universo da confeitaria.
+**Nucífera: Em Busca das Delícias** nasceu como uma iniciativa social para o **Dia das Crianças**: oferecer uma brincadeira gratuita, acolhedora e acessível para crianças e famílias, inspirada no universo da confeitaria.
 
 O projeto foi idealizado e desenvolvido por **Bobby Dias Developer**, com criação de personagens, cenas, vídeos e sonoplastia para dar vida a esse pequeno mundo. É uma versão de demonstração, feita com tempo e recursos limitados, para celebrar a data e compartilhar a alegria de jogar.
 
