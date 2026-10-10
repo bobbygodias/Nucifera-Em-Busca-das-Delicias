@@ -111,9 +111,8 @@ O APK instalável fica em **Releases**. O repositório contém apenas a versão 
 
 **Idealização, direção criativa e desenvolvimento: Bobby Dias Developer**
 
-Criado com auxílio de inteligência artificial na programação e na produção de conteúdo, com direção e revisão humana.
 
-**Feito com carinho para o Dia das Crianças.**
+**Feito com carinho para Crianças de Todas as Idades.**
 
 *Qapla’!*
 
