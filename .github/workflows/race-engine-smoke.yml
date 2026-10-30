@@ -1,10 +1,14 @@
-name: Race engine smoke tests
+name: Race engine and static assets smoke tests
 
 on:
   pull_request:
     paths:
+      - 'index.html'
       - 'game.js'
       - 'motorcycle.js'
+      - 'assets/**'
+      - 'logo-nucifera.jpg'
+      - 'android/app/src/main/game/**'
       - 'tests/**'
       - '.github/workflows/race-engine-smoke.yml'
   push:
@@ -12,8 +16,12 @@ on:
       - main
       - 'test/race-engine-ci-*'
     paths:
+      - 'index.html'
       - 'game.js'
       - 'motorcycle.js'
+      - 'assets/**'
+      - 'logo-nucifera.jpg'
+      - 'android/app/src/main/game/**'
       - 'tests/**'
       - '.github/workflows/race-engine-smoke.yml'
   workflow_dispatch:
@@ -34,5 +42,5 @@ jobs:
         run: |
           node --check game.js
           node --check motorcycle.js
-      - name: Run deterministic race regression tests
-        run: node --test tests/motorcycle.test.cjs
+      - name: Run deterministic race regression and static asset tests
+        run: node --test tests/*.test.cjs

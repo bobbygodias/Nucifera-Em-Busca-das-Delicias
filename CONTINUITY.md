@@ -23,3 +23,10 @@ Antes desta proposta, a consulta à API GitHub retornou **zero execuções de Ac
 1. Conferir CI do PR e corrigir falhas de teste reais, se houver.
 2. Avaliar testes de assets referenciados e execução em Android 5+ sem regressão visual.
 3. Preservar README, licença MIT e documentação de compilação.
+
+## Checkpoint de assets — 30/10/2026
+- Ampliada a cobertura da branch draft, sem tocar no código do jogo, mídias, README ou APK.
+- Novo teste em \`tests/assets.test.cjs\`: valida referências estáticas \`assets/...\` em HTML, JS e CSS de layout Android, além dos pontos de entrada \`img\`, \`video\` e \`script\` no HTML; verifica que os arquivos existem e não estão vazios.
+- Workflow atualizado para verificar assets e arquivos HTML de entrada quando modificados, com \`contents: read\` e testes Node sem dependências adicionais.
+- A cobertura é **estática**: não executa vídeo/áudio, WebView, Android, renderização, nem valida caminhos criados dinamicamente ou a integridade da mídia. Falhas devem ser investigadas antes de qualquer merge.
+- A confirmação final do GitHub Actions (run e status) será registrada no PR e no diário após a execução.
