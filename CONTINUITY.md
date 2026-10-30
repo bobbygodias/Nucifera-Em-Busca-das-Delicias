@@ -11,7 +11,7 @@ Projeto social gratuito e offline, com narrativa infantil, dez regiões, jogo de
 - `tests/motorcycle.test.cjs`: regressões determinísticas da simulação, sem testar vídeo, áudio, interface ou APK.
 
 ## Checkpoint de engenharia — 30/10/2026
-Antes desta proposta, a consulta à API GitHub retornou **zero execuções de Actions** para o repositório. Foi aberta a branch `test/race-engine-ci-20261030` para adicionar testes da fase de moto e um workflow de smoke test JavaScript, sem alterar código de produção, arte, identidade visual ou a release. Os resultados da CI precisam ser conferidos no PR; criação de workflow não é prova de sucesso.
+Antes desta proposta, a consulta à API GitHub retornou **zero execuções de Actions** para o repositório. Foi aberta a branch `test/race-engine-ci-20261030` para adicionar testes da fase de moto e um workflow de smoke test JavaScript, sem alterar código de produção, arte, identidade visual ou a release. CI verificada em 30/10/2026: run 40994643676, job `race-engine`, **SUCCESS**, incluindo `node --check` e os cinco testes. Isso valida apenas a lógica pura da corrida, não o aplicativo Android.
 
 ## Critérios e limites
 - Verificar `node --check game.js`, `node --check motorcycle.js` e `node --test tests/motorcycle.test.cjs`.
