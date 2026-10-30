@@ -1,0 +1,38 @@
+name: Race engine smoke tests
+
+on:
+  pull_request:
+    paths:
+      - 'game.js'
+      - 'motorcycle.js'
+      - 'tests/**'
+      - '.github/workflows/race-engine-smoke.yml'
+  push:
+    branches:
+      - main
+      - 'test/race-engine-ci-*'
+    paths:
+      - 'game.js'
+      - 'motorcycle.js'
+      - 'tests/**'
+      - '.github/workflows/race-engine-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  race-engine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check JavaScript syntax
+        run: |
+          node --check game.js
+          node --check motorcycle.js
+      - name: Run deterministic race regression tests
+        run: node --test tests/motorcycle.test.cjs
